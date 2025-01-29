@@ -21,7 +21,8 @@ point2 = arrayin[index2]
 
 #End background stuff, start distance calculation
 #Make the size of the unit cell into a unit vector in all directions
-
+def distance(point1, point2):
+    
     boundaries = np.repeat (1, d)
 
     Lsum2 = 0
@@ -32,6 +33,10 @@ point2 = arrayin[index2]
         if delta > (boundaries[i]/2):
             delta = boundaries[i] - delta
         Lsum2 += delta ** 2
+
+    lp1p2 = np.sqrt(Lsum2)
+
+    return lp1p2
 
 #print(np.sqrt(Lsum2))
 
