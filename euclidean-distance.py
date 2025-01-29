@@ -21,17 +21,17 @@ point2 = arrayin[index2]
 
 #End background stuff, start distance calculation
 #Make the size of the unit cell into a unit vector in all directions
-boundaries = np.repeat (1, d)
 
-Lsum2 = 0
-for i in range(len(point1)):
-    #Simple distance along one axis
-    delta = point1[i] - point2[i]
-    #Taking into account PBCs - this would work just as well for a cell of any size
-    delta = delta - delta / boundaries[i] * boundaries[i]
-    Lsum2 += delta ** 2
+    boundaries = np.repeat (1, d)
 
-return np.sqrt(Lsum2)
+    Lsum2 = 0
+    for i in range(len(point1)):
+        #Simple distance along one axis
+        delta = abs(point1[i] - point2[i])
+        #Taking into account PBCs - this would work just as well for a cell of any size
+        if delta > (boundaries[i]/2):
+            delta = boundaries[i] - delta
+        Lsum2 += delta ** 2
 
 #print(np.sqrt(Lsum2))
 
