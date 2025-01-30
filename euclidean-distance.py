@@ -34,9 +34,7 @@ def distance(point1, point2):
             delta = boundaries[i] - delta
         Lsum2 += delta ** 2
 
-    lp1p2 = np.sqrt(Lsum2)
-
-    return lp1p2
+    return Lsum2
 
 #print(np.sqrt(Lsum2))
 
