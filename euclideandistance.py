@@ -14,6 +14,7 @@ arrayin = np.loadtxt(infile, delimiter= " ")
 #Figure out d and N from array
 d = arrayin.ndim
 N = len(arrayin)
+boundaries = np.repeat (1, d + 1)
 
 point1 = arrayin[n]
 index2 = n + m
@@ -22,8 +23,6 @@ point2 = arrayin[index2]
 #End background stuff, start distance calculation
 #Make the size of the unit cell into a unit vector in all directions
 def distance(point1, point2):
-    
-    boundaries = np.repeat (1, d)
 
     Lsum2 = 0
     for i in range(len(point1)):
@@ -35,10 +34,3 @@ def distance(point1, point2):
         Lsum2 += delta ** 2
 
     return Lsum2
-
-#print(np.sqrt(Lsum2))
-
-#Basic loop which does not account for PBCs:
-#Lsum2 = 0
-#for i in range(len(point1)):
-#    Lsum2 += (point1[i] - point2[i])**2
