@@ -17,8 +17,6 @@ num_bins_per_dim = int(np.ceil(1 / s))
 
 #print(f"Dimensions: {d}, Particles: {N}, Cutoff: {s:.6f}, Cells per dim: {num_bins_per_dim}")
 
-tstart = time.time()
-
 #Function to create empty bins for arbitrary dimensions
 def partition(num_bins_per_dim, d):
     bins = {}
@@ -26,6 +24,9 @@ def partition(num_bins_per_dim, d):
     for bin_index in product(range(num_bins_per_dim), repeat=d):
         bins[bin_index] = []
     return bins
+
+
+tstart = time.time()
 
 #Create spatial bins
 bins = partition(num_bins_per_dim, d)
